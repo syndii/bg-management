@@ -14,11 +14,11 @@ interface IAddParams {
 export const addDataList = async (params: any) => {
   return await $api.post('/patients', {
     // uid: params.uid,
-    uname: params.tel,
+    uname: params.uname,
     sex: Number(params.sex),
     age: params.age,
-    tel: params.address,
-    address: params.age,
+    tel: params.tel,
+    address: params.address,
   })
 };
 

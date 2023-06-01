@@ -1,32 +1,34 @@
 <script>
-import {defineComponent} from "vue";
-import {Search} from "@element-plus/icons-vue";
+import {Search, Timer} from "@element-plus/icons-vue";
+import dayjs from "dayjs";
 
 export default {
   data() {
     return {
       navSearch: '', // 搜索记录
-      menu: [
+      currentTime: dayjs().format('YYYY年MM月DD日 HH:mm:ss'), // 获取当前时间并格式化
+      menu: [ // 之后可以写多个界面
         {
           path: '/',
           name: '首页',
         },
         {
-          path: '/',
+          path: 'http',
           name: '后台管理1',
-        },
-        {
-          path: '/',
-          name: '后台管理2',
-        },
-        {
-          path: '/',
-          name: '后台管理3',
         },
       ]
     }
   },
+  mounted() {
+    this.getTimer()
+  },
+  methods: {
+    getTimer() {
+      setInterval(() => {this.currentTime = dayjs().format('YYYY年MM月DD日 HH:mm:ss')}, 100)
+    }
+  },
   components: {
+    Timer,
     Search,
   }
 }
@@ -41,17 +43,27 @@ export default {
           <img src="../assets/image/logo.png" alt="" class="logo_img">
           <nav class="navigation-nav">
             <ul class="navbar-nav">
-              <li class="navbar-link" @click="this.$router.push(`${item.path}`)" v-for="(item, index) in menu" :key="item.index"><a href="" class="navbar-item">{{ item.name }}</a></li>
+              <li class="navbar-link" @click="this.$router.push(`${item.path}`)" v-for="(item, index) in menu"
+                  :key="item.index"><a href="" class="navbar-item">{{ item.name }}</a></li>
             </ul>
           </nav>
           <div class="nav-form">
+            <!--      搜索框      -->
             <div class="nav-search">
               <el-input v-model="navSearch" class="w-50 m-2" placeholder="Type something">
                 <template #prefix>
-                  <el-icon class="el-input__icon"><search /></el-icon>
+                  <el-icon class="el-input__icon">
+                    <search/>
+                  </el-icon>
                 </template>
               </el-input>
             </div>
+            <!--     时间显示       -->
+            <div class="current-timer-box">
+              <el-icon><Timer /></el-icon>
+              <span>{{currentTime}}</span>
+            </div>
+
             <div class="nav-user">
               <el-popover
                   :width="200"
@@ -69,7 +81,7 @@ export default {
                   >
 
                     <p class="demo-rich-content__desc" style="margin: 0">
-                     名字: user
+                      名字: user
                     </p>
                     <el-button type="success" class="user-button" @click="this.$router.push('/login')">登录</el-button>
                     <el-button type="danger" class="user-button" @clikc="">登出</el-button>
@@ -101,9 +113,8 @@ export default {
     --el-header-height: 75px;
     width: 100%;
     padding: 10px;
-    background-color: rgba(0, 0, 0, .7);
+    background-color: #21262f;
     display: flex;
-    margin-bottom: 2px;
 
     .logo_img {
       height: 100%;
@@ -163,7 +174,8 @@ export default {
       // 用户
       .nav-user {
 
-        .user-button {}
+        .user-button {
+        }
       }
     }
   }
@@ -178,6 +190,7 @@ export default {
     //background-color: aquamarine;
   }
 }
+
 .main {
   display: flex;
   flex: 1;
@@ -186,5 +199,12 @@ export default {
     display: flex;
     flex: 1;
   }
+}
+
+.current-timer-box i {
+  color: #fff;
+}
+.current-timer-box span {
+  color: #fff;
 }
 </style>
