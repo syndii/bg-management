@@ -11,22 +11,23 @@ export default [
             {label: '项目缴费', value: 'user4', index: '1-4'},
             {label: '项目检查', value: 'user5', index: '1-5'},
             {label: '药品缴费', value: 'user6', index: '1-6'},
-            {label: '门诊患者库', value: 'user7', index: '1-7'}
+            {label: '门诊患者库', value: 'user7', index: '1-7'},
+            {label: '医生管理', value: 'user8', index: '1-8'}
         ]
     },
     {
-        label: '流程管理',
+        label: '库存管理',
         value: 'two',
         index: '2',
         icon: 'Location',
         children: [
-            {label: '新增患者', value: '1-1', index: '2-1'},
-            {label: '流程管理', value: '1-2', index: '2-2'},
-            {label: '项目划价', value: '1-3', index: '2-3'},
-            {label: '项目缴费', value: '1-3', index: '2-4'},
-            {label: '项目检查', value: '1-3', index: '2-5'},
-            {label: '药品缴费', value: '1-3', index: '2-6'},
-            {label: '门诊患者库', value: '1-3', index: '2-7'}
+            {label: '采购管理', value: '1-1', index: '2-1'},
+            {label: '入库管理', value: '1-2', index: '2-2'},
+            {label: '出库管理', value: '1-3', index: '2-3'},
+            {label: '仓库管理', value: '1-3', index: '2-4'},
+            {label: '库存查询', value: '1-3', index: '2-5'},
+            {label: '物品字典', value: '1-3', index: '2-6'},
+            {label: '盘点管理', value: '1-3', index: '2-7'}
         ]
     },
     {
@@ -65,8 +66,8 @@ export default [
         index: '5',
         icon: 'Message',
         children: [
-            {label: 'item one', value: '1-1', index: '5-1'},
-            {label: 'item two', value: '1-2', index: '5-2'}
+            {label: '院内公告', value: '1-1', index: '5-1'},
+            {label: '短信通告', value: '1-2', index: '5-2'}
         ]
     },
     {
@@ -97,6 +98,18 @@ export default [
             {label: '项目检查', value: '1-3', index: '7-5'},
             {label: '药品缴费', value: '1-3', index: '7-6'},
             {label: '门诊患者库', value: '1-3', index: '7-7'}
+        ]
+    },
+    {
+        label: '机构管理',
+        value: '3',
+        index: '7',
+        icon: 'DocumentCopy',
+        children: [
+            {label: '机构配置', value: '1-1', index: '7-1'},
+            {label: '项目管理', value: '1-2', index: '7-2'},
+            {label: '审批配置', value: '1-3', index: '7-3'},
+            {label: '打印配置', value: '1-3', index: '7-4'},
         ]
     }
 ]

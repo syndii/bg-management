@@ -1,6 +1,6 @@
 <script>
 import {ElMessage, ElMessageBox} from 'element-plus';
-import {addDataList, getDataList, upDataList, delDataList} from '../../api/patients';
+import {addDataList, getDataList, upDataList, delDataList} from '@/api/Doctors/doctors';
 import MyPageFour from '../../components/MyPage.vue'
 import MyTabs from '../../components/MyTabs/MyTabs.vue';
 import {HomeFilled, Search, UploadFilled} from "@element-plus/icons-vue";
@@ -8,7 +8,6 @@ import dayjs from "dayjs";
 import printJS from 'print-js';
 import draggable from 'vuedraggable'; // npm i vuedraggable
 import Sortable from 'sortablejs'
-import {utils, writeFileXLSX, read} from 'xlsx';
 
 export default {
   data() {
@@ -38,8 +37,8 @@ export default {
           label: '电话',
         },
         {
-          prop: 'address',
-          label: '地址',
+          prop: 'a',
+          label: '备注',
         },
         {
           prop: 'createdAt',
@@ -59,7 +58,7 @@ export default {
         sex: '',
         age: '',
         tel: '',
-        address: '',
+        a: '',
       },
       rules: { // 设置添加信息的规则
         uname: [
@@ -105,7 +104,7 @@ export default {
         sex: '',
         age: '',
         tel: '',
-        address: '',
+        a: '',
       },
       // 自定义列内容
       columns: [
@@ -422,7 +421,7 @@ export default {
           </div>
         </div>
       </template>
-      <!-- 患者列表 -->
+      <!-- 医生列表 -->
       <div class="card card-table">
         <el-table :data="searchList.length ? searchList : tableData" row-key="getRowKey" stripe style="width: 100%;"
                   scrollbar-always-on>
@@ -543,38 +542,6 @@ export default {
         <div>
           <el-button type="primary" @click="print">立即打印</el-button>
           <el-button type="primary" @click="print">配置模板</el-button>
-        </div>
-      </el-dialog>
-
-      <!--   导入弹窗   -->
-      <el-dialog v-model="showImport"
-                 title="打印数据"
-                 width="40%"
-                 align-center>
-        <el-upload
-            class="upload-demo"
-            drag
-            action="#"
-            multiple
-            :on-change="importFile"
-            :auto-upload="false"
-        >
-          <el-icon class="el-icon--upload">
-            <upload-filled/>
-          </el-icon>
-          <div class="el-upload__text">
-            将文件拖到此处<p class="el-text--success">或点击上传</p>
-          </div>
-          <template #tip>
-            <div class="el-upload__tip" style="text-align: center">
-              <p> 是否更新已经存在的用户数据</p>
-              仅允许导入xs、xsx格式文件。<a href="#" class="el-text--success">下载模板</a>
-            </div>
-          </template>
-        </el-upload>
-        <div style="text-align: center">
-          <el-button type="success">确认导入</el-button>
-          <el-button @click="this.showImport = false">取消</el-button>
         </div>
       </el-dialog>
     </MyPageFour>

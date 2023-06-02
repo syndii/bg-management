@@ -20,6 +20,11 @@ const routes: Array<RouteRecordRaw> = [
                         path: 'user1',
                         name: 'userList',
                         component: () => import('../pages/Management/MyUserList.vue')
+                    },
+                    {
+                        path: 'user8',
+                        name: 'userDoctors',
+                        component: () => import('../pages/Doctors/MyDoctors.vue')
                     }
                 ]
             },
@@ -40,6 +45,7 @@ const routes: Array<RouteRecordRaw> = [
         name:'MyRegister',
         component: import('../view/user/MyRegister.vue')
     },
+    /* 医生列表 */
 ]
 
 const route = createRouter({
